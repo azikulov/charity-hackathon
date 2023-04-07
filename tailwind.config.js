@@ -2,7 +2,18 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'neue-inktrap': ['var(--font-neue-inktrap)'],
+      },
+      container: {
+        center: true,
+        padding: '3rem',
+        screens: {
+          '2xl': '1280px',
+        },
+      },
+    },
   },
   plugins: [],
 };
