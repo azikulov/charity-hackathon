@@ -1,3 +1,4 @@
+import { Header } from '@/components/Header';
 import { Layout } from '@/components/Layout';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -5,46 +6,7 @@ import Link from 'next/link';
 export default function HomePage() {
   return (
     <Layout>
-      <header className='container py-3 flex items-center justify-between'>
-        <Link
-          href='#'
-          className='inline-block text-2xl font-neue-plain text-[#222527] italic'
-        >
-          C&DC
-        </Link>
-
-        <nav className='flex gap-6'>
-          <Link
-            href='/'
-            className='inline-block text-[#005BBB] border-b-2 border-b-[#005BBB] font-bold'
-          >
-            Главная
-          </Link>
-          <Link href='#' className='inline-block font-light text-[#222527]'>
-            Доска обьявлений
-          </Link>
-        </nav>
-
-        <Link
-          href='#'
-          className='flex items-center gap-x-3 py-1 px-4 rounded border border-[#005BBB]'
-        >
-          <span className='mt-[2px] italic  font-light text-[#005BBB]'>
-            Внести донат
-          </span>
-          <svg
-            width='32'
-            height='32'
-            viewBox='0 0 32 32'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-            className='w-6 h-6'
-          >
-            <circle cx='16' cy='16' r='16' fill='#005BBB' />
-            <path d='M10 22L22 10M22 10H12.8696M22 10V18.3478' stroke='white' />
-          </svg>
-        </Link>
-      </header>
+      <Header />
 
       <main className='container mb-12 mt-16'>
         <div className='flex gap-x-36'>
@@ -116,7 +78,7 @@ export default function HomePage() {
           </ul>
 
           <Link
-            href='#'
+            href='/pay'
             className='flex items-center w-fit text-2xl italic bg-[#005BBB] gap-x-5 py-5 px-12 rounded-lg border border-[#005BBB]'
           >
             <span className='text-[#fff]'>Внести донат</span>
@@ -133,18 +95,13 @@ export default function HomePage() {
               <path
                 d='M20 44L44 20M44 20H25.7391M44 20V36.6957'
                 stroke='#222527'
-                stroke-width='2'
+                strokeWidth='2'
               />
             </svg>
           </Link>
         </div>
 
-        <div className='flex items-end justify-between my-8'>
-          <div className='font-light text-sm'>
-            <span className='text-base text-[#005BBB] font-normal'>RUS</span>
-            /ENG/ҚАЗ
-          </div>
-
+        <div className='flex items-end justify-between my-8 mx-16'>
           <Image
             src={require('@/assets/images/image1.png')}
             width={384}
@@ -213,7 +170,7 @@ export default function HomePage() {
           </div>
 
           <Link
-            href='#'
+            href='/pay'
             className='flex items-center w-fit text-2xl italic text-[#222527] bg-[#FFD605] gap-x-5 py-5 px-12 rounded-lg border border-[#FFD605]'
           >
             <span>Внести донат</span>

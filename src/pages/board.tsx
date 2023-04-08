@@ -1,51 +1,12 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
 import { Layout } from '@/components/Layout';
+import { Header } from '@/components/Header';
 
 export default function BoardPage() {
   return (
     <Layout>
-      <header className='container py-3 flex items-center justify-between'>
-        <Link
-          href='#'
-          className='inline-block text-2xl font-neue-plain text-[#222527] italic'
-        >
-          C&DC
-        </Link>
-
-        <nav className='flex gap-6'>
-          <Link
-            href='/'
-            className='inline-block text-[#005BBB] border-b-2 border-b-[#005BBB] font-bold'
-          >
-            Главная
-          </Link>
-          <Link href='#' className='inline-block font-light text-[#222527]'>
-            Доска обьявлений
-          </Link>
-        </nav>
-
-        <Link
-          href='#'
-          className='flex items-center gap-x-3 py-1 px-4 rounded border border-[#005BBB]'
-        >
-          <span className='mt-[2px] italic  font-light text-[#005BBB]'>
-            Внести донат
-          </span>
-          <svg
-            width='32'
-            height='32'
-            viewBox='0 0 32 32'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-            className='w-6 h-6'
-          >
-            <circle cx='16' cy='16' r='16' fill='#005BBB' />
-            <path d='M10 22L22 10M22 10H12.8696M22 10V18.3478' stroke='white' />
-          </svg>
-        </Link>
-      </header>
+      <Header />
 
       <main className='container'></main>
 
