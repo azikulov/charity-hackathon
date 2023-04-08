@@ -91,7 +91,10 @@ export default function BoardPage() {
           </div>
 
           {isShowThanks ? (
-            <div className='absolute top-0 left-0 flex justify-center items-center w-full h-full bg-[#00000069]'>
+            <div
+              onClick={() => setIsShowThanks(false)}
+              className='absolute top-0 left-0 flex justify-center items-center w-full h-full bg-[#00000069]'
+            >
               <Image
                 className='w-[846px] h-[600px]'
                 src={require('@/assets/images/thanks.png')}
