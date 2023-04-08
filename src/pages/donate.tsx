@@ -1,17 +1,9 @@
 import { Layout } from '@/components/Layout';
-import { createRef } from 'react';
+import { createRef, useState } from 'react';
 import { NumericFormat } from 'react-number-format';
 
 export default function Donate() {
-  const inputRef = createRef<HTMLInputElement>();
-
-  function handleSelect(value: string) {
-    return function () {
-      const inputElement = inputRef.current as HTMLInputElement;
-
-      inputElement.value = value;
-    };
-  }
+  const [amountValue, setAmountValue] = useState<number>();
 
   return (
     <Layout>
@@ -28,15 +20,14 @@ export default function Donate() {
           <p className='flex justify-center items-center gap-x-2'>
             <NumericFormat
               suffix=' $'
+              onChange={(event) => {
+                setAmountValue(event.target.valueAsNumber);
+              }}
+              value={amountValue}
+              inputMode='numeric'
               placeholder='0 $'
               className='text-3xl outline-none text-center mt-2 mb-3'
             />
-            {/* <input
-              ref={inputRef}
-              className='text-3xl outline-none w-44 text-right mt-2 mb-3'
-              placeholder='0'
-            />
-            <span className='text-3xl'>$</span> */}
           </p>
           <p className='text-sm text-[#808080] text-center'>
             Минимальная сумма 10 %
@@ -46,21 +37,21 @@ export default function Donate() {
         <ul className='flex justify-between items-center mt-4'>
           <a
             href='#'
-            onClick={handleSelect('1000')}
+            onClick={() => setAmountValue(1000)}
             className='whitespace-nowrap focus:bg-[#005BBB] focus:text-white px-2 text-[#005BBB] border border-[#005BBB] text-lg rounded-md'
           >
             1 000 $
           </a>
           <a
             href='#'
-            onClick={handleSelect('5000')}
+            onClick={() => setAmountValue(5000)}
             className='whitespace-nowrap focus:bg-[#005BBB] focus:text-white px-2 text-[#005BBB] border border-[#005BBB] text-lg rounded-md'
           >
             5 000 $
           </a>
           <a
             href='#'
-            onClick={handleSelect('10000')}
+            onClick={() => setAmountValue(10000)}
             className='whitespace-nowrap focus:bg-[#005BBB] focus:text-white px-2 text-[#005BBB] border border-[#005BBB] text-lg rounded-md'
           >
             10 000 $

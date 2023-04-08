@@ -231,8 +231,12 @@ function KaspiQR() {
 
 function QRCode() {
   return (
-    <div className='w-[400px] h-[400px] border-2 rounded-3xl bg-[#eee] mt-8 mb-8'>
-      QRCode
+    <div className='w-[400px] h-[400px] border-2 rounded-3xl mt-8 mb-8 p-6'>
+      <Image
+        src={require('@/assets/images/qr-code.png')}
+        alt='qr code'
+        className=''
+      />
     </div>
   );
 }
