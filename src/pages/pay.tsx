@@ -184,7 +184,95 @@ function JusanQR() {
 }
 
 function Crypto() {
-  return <div className=''>Crypto</div>;
+  return (
+    <form className='mt-4'>
+      <div className='grid grid-cols-2 gap-x-6 gap-y-3'>
+        <div className='' aria-label='field'>
+          <p className=''>Ваш номер счета</p>
+          <input
+            type='text'
+            placeholder='Введите номер счета'
+            className='px-4 rounded-md focus:border-[#222527] border outline-none font-light italic text-[#222527] py-2'
+          />
+        </div>
+
+        <div className='' aria-label='field'>
+          <p className=''>Наш адрес</p>
+          <input
+            type='text'
+            placeholder='Введите номер счета'
+            value={'DS717DA7128D94'}
+            className='px-4 rounded-md focus:border-[#222527] border outline-none font-light italic text-[#222527] py-2'
+          />
+        </div>
+
+        <div className='' aria-label='field'>
+          <p className=''>Сумма ввода</p>
+          <input
+            type='text'
+            placeholder='Введите сумму'
+            className='px-4 rounded-md focus:border-[#222527] border outline-none font-light italic text-[#222527] py-2'
+          />
+        </div>
+
+        <div className='' aria-label='field'>
+          <p className=''>Криптовалюта</p>
+
+          <select
+            className='px-4 w-full bg-white rounded-md font-neue-inktrap focus:border-[#222527] border outline-none font-light italic text-[#222527] py-2'
+            name=''
+            id=''
+          >
+            <option value='USDT'>USDT</option>
+            <option value='BTC'>BTC</option>
+            <option value='ETH'>ETH</option>
+          </select>
+        </div>
+
+        <div className='' aria-label='field'>
+          <p className=''>Имя</p>
+          <input
+            type='text'
+            placeholder='Введите имя'
+            className='px-4 rounded-md focus:border-[#222527] border outline-none font-light italic text-[#222527] py-2'
+          />
+        </div>
+
+        <div className='' aria-label='field'>
+          <p className=''>Фамилия</p>
+          <input
+            type='text'
+            placeholder='Введите фамилию'
+            className='px-4 rounded-md focus:border-[#222527] border outline-none font-light italic text-[#222527] py-2'
+          />
+        </div>
+      </div>
+
+      <br />
+
+      <button
+        className='flex items-center w-fit text-base italic bg-[#005BBB] gap-x-5 py-2 px-6 rounded-lg border border-[#005BBB]'
+        type='submit'
+      >
+        <span className='text-[#fff]'>Внести донат</span>
+        <svg
+          width='64'
+          height='64'
+          viewBox='0 0 64 64'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+          className='w-7 h-7'
+        >
+          <circle cx='32' cy='32' r='32' fill='#FFD605' />
+          <path
+            d='M20 44L44 20M44 20H25.7391M44 20V36.6957'
+            stroke='#222527'
+            strokeWidth='2'
+          />
+        </svg>
+      </button>
+    </form>
+  );
 }
 
 function KaspiQR() {
