@@ -22,7 +22,9 @@ const fontNeueInktrap = localFont({
 
 export function Layout(props: PropsWithChildren) {
   return (
-    <div className={`${fontNeueInktrap.variable} font-neue-inktrap`}>
+    <div
+      className={`${fontNeueInktrap.variable} font-neue-inktrap flex flex-col h-screen`}
+    >
       {props.children}
     </div>
   );
