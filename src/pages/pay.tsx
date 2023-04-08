@@ -175,11 +175,13 @@ export default function BoardPage() {
 
 function JusanQR() {
   return (
-    <Image
-      src={require('@/assets/images/qr.png')}
-      alt='qr code'
-      className='w-[400px] h-[400px] border-2 rounded-3xl bg-[#eee] mt-8 mb-8'
-    />
+    <div className='w-[400px] h-[400px] border-2 rounded-3xl mt-8 mb-8 p-6'>
+      <Image
+        src={require('@/assets/images/jusanqr.jpg')}
+        alt='qr code'
+        className=''
+      />
+    </div>
   );
 }
 
