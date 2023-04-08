@@ -23,7 +23,7 @@ export function Board(props: IBoard) {
             target='_blank'
             className='font-bold text-2xl text-[#005BBB]'
           >
-            {props.telegram}
+            {props.telegram || '@johndoe'}
           </a>
         </div>
 

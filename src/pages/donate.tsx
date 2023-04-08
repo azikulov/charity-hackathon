@@ -1,5 +1,5 @@
 import { Layout } from '@/components/Layout';
-import { createRef, useState } from 'react';
+import { useState } from 'react';
 import { NumericFormat } from 'react-number-format';
 
 export default function Donate() {

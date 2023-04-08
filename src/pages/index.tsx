@@ -188,7 +188,7 @@ export default function HomePage() {
               <path
                 d='M20 44L44 20M44 20H25.7391M44 20V36.6957'
                 stroke='#fff'
-                stroke-width='2'
+                strokeWidth='2'
               />
             </svg>
           </Link>
