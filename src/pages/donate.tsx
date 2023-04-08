@@ -1,13 +1,21 @@
 import { Layout } from '@/components/Layout';
+import Image from 'next/image';
 import { useState } from 'react';
 import { NumericFormat } from 'react-number-format';
 
 export default function Donate() {
   const [amountValue, setAmountValue] = useState<number>();
+  const [isShowThanks, setIsShowThanks] = useState(false);
+
+  function handleSubmit(event: any) {
+    event.preventDefault();
+
+    setIsShowThanks(true);
+  }
 
   return (
     <Layout>
-      <div className='m-6'>
+      <form onSubmit={handleSubmit} className='m-6'>
         <h1 className='italic text-4xl text-center'>C&DC</h1>
         <br />
 
@@ -26,7 +34,7 @@ export default function Donate() {
               value={amountValue}
               inputMode='numeric'
               placeholder='0 $'
-              className='text-3xl outline-none text-center mt-2 mb-3'
+              className='text-3xl w-64 outline-none text-center mt-2 mb-3'
             />
           </p>
           <p className='text-sm text-[#808080] text-center'>
@@ -116,7 +124,22 @@ export default function Donate() {
         </button>
 
         <br className='mb-12' />
-      </div>
+      </form>
+
+      {isShowThanks ? (
+        <div
+          onClick={() => setIsShowThanks(false)}
+          className='fixed top-0 left-0 flex justify-center items-center w-full h-full bg-[#00000069]'
+        >
+          <Image
+            className='w-[346px] max-h-[250px]'
+            src={require('@/assets/images/thanks.png')}
+            alt=''
+          />
+        </div>
+      ) : (
+        ''
+      )}
     </Layout>
   );
 }

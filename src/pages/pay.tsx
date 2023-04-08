@@ -93,7 +93,7 @@ export default function BoardPage() {
           {isShowThanks ? (
             <div
               onClick={() => setIsShowThanks(false)}
-              className='absolute top-0 left-0 flex justify-center items-center w-full h-full bg-[#00000069]'
+              className='fixed top-0 left-0 flex justify-center items-center w-full h-full bg-[#00000069]'
             >
               <Image
                 className='w-[846px] h-[600px]'
