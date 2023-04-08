@@ -23,6 +23,22 @@ export default function ReportingPage() {
       .then((data) => setReports(data));
   }
 
+  function collectedAmount() {
+    let amount = 0;
+
+    reports.forEach((report) => (amount += Number(report.amount)));
+
+    return amount;
+  }
+
+  function totalAmount() {
+    let amount = 0;
+
+    expenses.forEach((expense) => (amount += Number(expense.amount)));
+
+    return amount;
+  }
+
   useEffect(() => {
     fetchReportingData();
   }, []);
@@ -39,7 +55,9 @@ export default function ReportingPage() {
             <hr className='my-5 bg-[#DEDEDE]' />
 
             <h2 className='text-xl'>Собранная сумма</h2>
-            <h1 className='mt-3 font-bold italic text-xl'>200 000 ₸</h1>
+            <h1 className='mt-3 font-bold italic text-xl'>
+              {collectedAmount()} ₸
+            </h1>
           </div>
 
           <div
@@ -122,7 +140,7 @@ export default function ReportingPage() {
             <hr className='my-5 bg-[#DEDEDE]' />
 
             <h2 className='text-xl'>Общая сумма</h2>
-            <h1 className='mt-3 font-bold italic text-xl'>200 000 ₸</h1>
+            <h1 className='mt-3 font-bold italic text-xl'>{totalAmount()} ₸</h1>
           </div>
 
           <div
@@ -189,7 +207,9 @@ export default function ReportingPage() {
           <hr className='my-5 bg-[#DEDEDE]' />
 
           <h2 className='text-xl'>Оставшаяся сумма</h2>
-          <h1 className='mt-3 font-bold italic text-xl'>0 ₸</h1>
+          <h1 className='mt-3 font-bold italic text-xl'>
+            {collectedAmount() + totalAmount()} ₸
+          </h1>
         </div>
       </main>
 
