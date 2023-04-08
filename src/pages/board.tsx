@@ -2,13 +2,24 @@ import Link from 'next/link';
 
 import { Layout } from '@/components/Layout';
 import { Header } from '@/components/Header';
+import { Board } from '@/components/Board';
 
 export default function BoardPage() {
   return (
     <Layout>
       <Header />
 
-      <main className='container'></main>
+      <div className='mt-6' />
+
+      <main className='container flex flex-col gap-y-6'>
+        {Array(8)
+          .fill(5)
+          .map((_, idx) => (
+            <Board key={idx} />
+          ))}
+
+        <div className='mb-12' />
+      </main>
 
       <footer className='bg-[#222527]'>
         <div className='container py-12 flex justify-between'>
