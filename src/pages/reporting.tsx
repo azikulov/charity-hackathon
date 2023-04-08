@@ -1,13 +1,31 @@
+import { Fragment } from 'react';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { Layout } from '@/components/Layout';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import moment from 'moment';
 
 export default function ReportingPage() {
   const [isOpen, setIsOpen] = useState({
     meetingList: true,
     managedUse: false,
   });
+  const [expenses, setExpenses] = useState<any[]>([]);
+  const [reports, setReports] = useState<any[]>([]);
+
+  function fetchReportingData() {
+    fetch('https://charity-hackathon.herokuapp.com/api/expenses/')
+      .then((res) => res.json())
+      .then((data) => setExpenses(data));
+
+    fetch('https://charity-hackathon.herokuapp.com/api/financial_reports/')
+      .then((res) => res.json())
+      .then((data) => setReports(data));
+  }
+
+  useEffect(() => {
+    fetchReportingData();
+  }, []);
 
   return (
     <Layout>
@@ -59,34 +77,40 @@ export default function ReportingPage() {
             <div className='px-8 pb-4 flex flex-col gap-y-2'>
               <hr className='mt-1 mb-4' />
 
-              <div className=''>
-                <div className='font-light mb-1'>ФИО</div>
-                <div className='font-bold'>
-                  Джолдаспаев Алимжан Арыстанбекович
-                </div>
-              </div>
+              {reports.map((report, index) => (
+                <Fragment key={index}>
+                  <div className=''>
+                    <div className='font-light mb-1'>ФИО</div>
+                    <div className='font-bold'>{report.full_name}</div>
+                  </div>
 
-              <div className=''>
-                <div className='font-light mb-1'>Номер телефона</div>
-                <div className='font-bold'>+7 (747) 103-64-10</div>
-              </div>
+                  <div className=''>
+                    <div className='font-light mb-1'>Номер телефона</div>
+                    <div className='font-bold'>{report.phone_number}</div>
+                  </div>
 
-              <div className=''>
-                <div className='font-light mb-1'>Телеграмм</div>
-                <div className='font-bold text-[#005BBB]'>@azikulov</div>
-              </div>
+                  <div className=''>
+                    <div className='font-light mb-1'>Телеграмм</div>
+                    <div className='font-bold text-[#005BBB]'>
+                      {report.telegram}
+                    </div>
+                  </div>
 
-              <div className=''>
-                <div className='font-light mb-1'>Вводимая сумма</div>
-                <div className='font-bold'>100 000</div>
-              </div>
+                  <div className=''>
+                    <div className='font-light mb-1'>Вводимая сумма</div>
+                    <div className='font-bold'>{report.amount} ₸</div>
+                  </div>
 
-              <div className=''>
-                <div className='font-light mb-1'>Дата пожертвования</div>
-                <div className='font-bold'>09.10.2004г.</div>
-              </div>
+                  <div className=''>
+                    <div className='font-light mb-1'>Дата пожертвования</div>
+                    <div className='font-bold'>
+                      {moment(report.donation_date).format('LLL')}
+                    </div>
+                  </div>
 
-              <hr className='my-4' />
+                  <hr className='my-4' />
+                </Fragment>
+              ))}
             </div>
           </div>
         </div>
@@ -135,27 +159,26 @@ export default function ReportingPage() {
 
             <div className='px-8 pb-4 flex flex-col gap-y-2'>
               <hr className='mt-1 mb-4' />
+              {expenses.map((expense, index) => (
+                <Fragment key={index}>
+                  <div className=''>
+                    <div className='font-light mb-1'>Используемая сумма</div>
+                    <div className='font-bold'>{expense?.amount} ₸</div>
+                  </div>
 
-              <div className=''>
-                <div className='font-light mb-1'>Используемая сумма</div>
-                <div className='font-bold'>100 000 ₸</div>
-              </div>
+                  <div className=''>
+                    <div className='font-light mb-1'>Описание</div>
+                    <div className='font-bold'>{expense?.description}</div>
+                  </div>
 
-              <div className=''>
-                <div className='font-light mb-1'>Описание</div>
-                <div className='font-bold'>
-                  Lorem Ipsum - это текст-рыба, часто используемый в печати...
-                </div>
-              </div>
+                  <div className='border p-4 rounded-xl'>
+                    <div className='font-light mb-1'>Комментарий</div>
+                    <div className='font-bold'>{expense?.comment}</div>
+                  </div>
 
-              <div className='border p-4 rounded-xl'>
-                <div className='font-light mb-1'>Комментарий</div>
-                <div className='font-bold'>
-                  Lorem Ipsum - это текст-рыба, часто используемый в печати...
-                </div>
-              </div>
-
-              <hr className='my-4' />
+                  <hr className='my-4' />
+                </Fragment>
+              ))}
             </div>
           </div>
         </div>
