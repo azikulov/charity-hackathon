@@ -1,5 +1,6 @@
 import { Layout } from '@/components/Layout';
 import { createRef } from 'react';
+import { NumericFormat } from 'react-number-format';
 
 export default function Donate() {
   const inputRef = createRef<HTMLInputElement>();
@@ -25,12 +26,17 @@ export default function Donate() {
           <hr className='my-4' />
 
           <p className='flex justify-center items-center gap-x-2'>
-            <input
+            <NumericFormat
+              suffix=' $'
+              placeholder='0 $'
+              className='text-3xl outline-none text-center mt-2 mb-3'
+            />
+            {/* <input
               ref={inputRef}
               className='text-3xl outline-none w-44 text-right mt-2 mb-3'
               placeholder='0'
             />
-            <span className='text-3xl'>$</span>
+            <span className='text-3xl'>$</span> */}
           </p>
           <p className='text-sm text-[#808080] text-center'>
             Минимальная сумма 10 %
@@ -38,24 +44,27 @@ export default function Donate() {
         </div>
 
         <ul className='flex justify-between items-center mt-4'>
-          <li
+          <a
+            href='#'
             onClick={handleSelect('1000')}
-            className='whitespace-nowrap px-2 text-[#005BBB] border border-[#005BBB] text-lg rounded-md'
+            className='whitespace-nowrap focus:bg-[#005BBB] focus:text-white px-2 text-[#005BBB] border border-[#005BBB] text-lg rounded-md'
           >
             1 000 $
-          </li>
-          <li
+          </a>
+          <a
+            href='#'
             onClick={handleSelect('5000')}
-            className='whitespace-nowrap px-2 border border-[#005BBB] text-lg rounded-md bg-[#005BBB] text-white'
+            className='whitespace-nowrap focus:bg-[#005BBB] focus:text-white px-2 text-[#005BBB] border border-[#005BBB] text-lg rounded-md'
           >
             5 000 $
-          </li>
-          <li
+          </a>
+          <a
+            href='#'
             onClick={handleSelect('10000')}
-            className='whitespace-nowrap px-2 text-[#005BBB] border border-[#005BBB] text-lg rounded-md'
+            className='whitespace-nowrap focus:bg-[#005BBB] focus:text-white px-2 text-[#005BBB] border border-[#005BBB] text-lg rounded-md'
           >
             10 000 $
-          </li>
+          </a>
         </ul>
 
         <h2 className='text-center text-xl mt-5'>Курс валюты</h2>

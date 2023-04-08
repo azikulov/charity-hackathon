@@ -1,4 +1,4 @@
-import { FormEventHandler, useState } from 'react';
+import { useState } from 'react';
 
 import { Layout } from '@/components/Layout';
 import { useRouter } from 'next/router';
@@ -126,6 +126,7 @@ function JusanQR() {
   );
 }
 
+// eslint-disable-next-line no-unused-vars
 function Crypto(props: { handleSubmit(e: any): void }) {
   return (
     <form onSubmit={props.handleSubmit} className='mt-4'>
