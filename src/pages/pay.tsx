@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FormEventHandler, useState } from 'react';
 
 import { Layout } from '@/components/Layout';
 import { useRouter } from 'next/router';
@@ -9,6 +9,13 @@ import { Footer } from '@/components/Footer';
 export default function BoardPage() {
   const router = useRouter();
   const [tab, setTab] = useState<'jusan' | 'crypto' | 'kaspi' | 'qr'>('jusan');
+  const [isShowThanks, setIsShowThanks] = useState(false);
+
+  function handleSubmit(event: any) {
+    event.preventDefault();
+
+    setIsShowThanks(true);
+  }
 
   return (
     <Layout>
@@ -83,8 +90,20 @@ export default function BoardPage() {
             </button>
           </div>
 
+          {isShowThanks ? (
+            <div className='absolute top-0 left-0 flex justify-center items-center w-full h-full bg-[#00000069]'>
+              <Image
+                className='w-[846px] h-[600px]'
+                src={require('@/assets/images/thanks.png')}
+                alt=''
+              />
+            </div>
+          ) : (
+            ''
+          )}
+
           {tab === 'jusan' && <JusanQR />}
-          {tab === 'crypto' && <Crypto />}
+          {tab === 'crypto' && <Crypto handleSubmit={handleSubmit} />}
           {tab === 'kaspi' && <KaspiQR />}
           {tab === 'qr' && <QRCode />}
         </div>
@@ -107,9 +126,9 @@ function JusanQR() {
   );
 }
 
-function Crypto() {
+function Crypto(props: { handleSubmit(e: any): void }) {
   return (
-    <form className='mt-4'>
+    <form onSubmit={props.handleSubmit} className='mt-4'>
       <div className='grid grid-cols-2 gap-x-6 gap-y-3'>
         <div className='' aria-label='field'>
           <p className=''>Ваш номер счета</p>
